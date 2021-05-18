@@ -1,2 +1,2 @@
-"# Django e-Ticaret RentACar Projesi" 
+"# Django RentACar Projesi" 
 "# RentACar" 
