@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>pycharm commit</title>
-</head>
-<body>
-<h1>Hos Geldin Django</h1>
-<h3>Karabuk Universitesi Bilgisayar Muhendisligi commit degisikligi</h3>
-<p> {{ text}}</p>
-</body>
-</html>
+{% extends "homebase.html" %}
+
+{% block title %} Index hhhh Sayfasi {% endblock %}
+{% block keywords %} Anahtar Kelimeler {% endblock %}
+{% block description %} Index Sayfasi Aciklama {% endblock %}
+
+{% block slider %} {% include "slider.html" %}{% endblock %}
+
+{% block content %} {% include "content.html" %}{% endblock %}
