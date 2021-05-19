@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.safestring import mark_safe
+from ckeditor_uploader.fields import RichTextUploadingField
+from ckeditor.fields import RichTextField
 
 
 class Category (models.Model):
@@ -42,14 +44,14 @@ class Product(models.Model):
     keywords = models.CharField(max_length=255)
     image = models.ImageField(blank=True, upload_to='images/')
     status = models.CharField(max_length=10, choices=STATUS)
-    price = models.FloatField()
+    price = models.FloatField(blank=True)
     gear = models.CharField(max_length=10, choices=GEAR)
     type = models.CharField(max_length=30)
-    number_of_seats = models.IntegerField()
-    engine = models.FloatField()
-    amount = models.IntegerField()
-    detail = models.TextField()
-    slug = models.SlugField()
+    number_of_seats = models.IntegerField(blank=True)
+    engine = models.FloatField(blank=True)
+    amount = models.IntegerField(blank=True)
+    detail = RichTextUploadingField(blank=True)
+    slug = models.SlugField(blank=True)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
