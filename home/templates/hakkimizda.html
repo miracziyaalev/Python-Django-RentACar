@@ -1,0 +1,43 @@
+
+
+{% extends "homebase.html" %}
+
+{% load static %}
+
+{% block title %} {{ setting.title }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %} {{ setting.description}} {% endblock %}
+
+{% block head %}
+
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+
+ {% endblock %}
+
+
+
+{% block content %}
+
+      <div class="about-us-wrapper pt-60 pb-40">
+                <div class="container">
+                    <div class="row">
+                        <!-- About Text Start -->
+                        <div class="col-lg-6 order-last order-lg-first">
+                            <div class="about-text-wrap">
+                                <h2><span>Alevoglu Rent a Car</span>Hakkımızda</h2>
+                                {{ setting.aboutus|safe }}
+                            </div>
+                        </div>
+                        <!-- About Text End -->
+                        <!-- About Image Start -->
+                        <div class="col-lg-5 col-md-10">
+                            <div class="about-image-wrap">
+                                <img class="img-full"  src="{% static 'images/product/large-size/alevoglu.png' %}" alt="About Us" width="300" />
+                            </div>
+                        </div>
+                        <!-- About Image End -->
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}
