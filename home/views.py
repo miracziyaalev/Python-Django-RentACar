@@ -17,7 +17,8 @@ def index(request):
 
 def hakkimizda(request):
     setting = Setting.objects.get()
-    context = {'setting': setting, 'page': 'hakkimizda'}
+    category = Category.objects.all()
+    context = {'setting': setting, 'category': category, 'page': 'hakkimizda'}
     return render(request, 'hakkimizda.html', context)
 
 def iletisim(request):
@@ -36,6 +37,7 @@ def iletisim(request):
             return HttpResponseRedirect ('/iletisim')
         
     setting = Setting.objects.get()
+    category = Category.objects.all()
     form = ContactFormu()
-    context={'setting':setting, 'form':form}
+    context={'setting':setting, 'category': category, 'form':form}
     return render(request, 'iletisim.html', context)
