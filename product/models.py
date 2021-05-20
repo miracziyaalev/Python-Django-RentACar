@@ -21,7 +21,12 @@ class Category (models.Model):
     update_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.title
+        full_path = [self.title]
+        k = self.parent
+        while k is not None:
+            full_path.append(k.title)
+            k = k.parent
+        return ' -> '.join(full_path[::-1])
 
     def image_tag(self):
         return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
@@ -51,7 +56,7 @@ class Product(models.Model):
     engine = models.FloatField(blank=True)
     amount = models.IntegerField(blank=True)
     detail = RichTextUploadingField(blank=True)
-    slug = models.SlugField(blank=True)
+    slug = models.SlugField(blank=True, max_length=150)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
