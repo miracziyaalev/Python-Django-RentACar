@@ -1,4 +1,5 @@
 {% load static %}
+
             <!-- Begin Header Area -->
             <header>
                 <!-- Begin Header Top Area -->
@@ -277,14 +278,16 @@
 
 
 
-                                            <li class="dropdown-holder"><a href="/category/{{ node.slug }}">Blog</a>
+                                            <li class="dropdown-holder"><a href="/category/{{ node.slug }}">FİLO</a>
 
 
 
                                                 <ul class="hb-dropdown">
                                                     {% load mptt_tags %}
 
+
                                                     {% recursetree category %}
+
                                                         <li class="sub-dropdown-holder"><a href="/category/{{ node.slug }}">{{ node.title }}</a>
                                                             <ul class="hb-dropdown hb-sub-dropdown">
 
@@ -352,8 +355,8 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li><a href="hakkimizda/">Hakkımızda</a></li>
-                                            <li><a href="iletisim/">İletişim</a></li>
+                                            <li><a href="/hakkimizda/">Hakkımızda</a></li>
+                                            <li><a href="/iletisim/">İletişim</a></li>
                                             <li><a href="shop-left-sidebar.html">Smartwatch</a></li>
                                             <li><a href="shop-left-sidebar.html">Accessories</a></li>
                                         </ul>
