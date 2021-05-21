@@ -288,7 +288,7 @@
 
                                                     {% recursetree category %}
 
-                                                        <li class="sub-dropdown-holder"><a href="/category/{{ node.slug }}">{{ node.title }}</a>
+                                                        <li class="sub-dropdown-holder"><a href="/category/{{ node.id }}/{{ node.slug }}">{{ node.title }}</a>
                                                             <ul class="hb-dropdown hb-sub-dropdown">
 
                                                             {% if not node.is_leaf_node %}

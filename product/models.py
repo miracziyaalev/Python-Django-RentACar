@@ -62,7 +62,7 @@ class Product(models.Model):
     engine = models.FloatField(blank=True)
     amount = models.IntegerField(blank=True)
     detail = RichTextUploadingField(blank=True)
-    slug = models.SlugField(blank=True, max_length=150)
+    slug = models.SlugField(max_length=150)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 

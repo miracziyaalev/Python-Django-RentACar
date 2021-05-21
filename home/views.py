@@ -18,8 +18,15 @@ def index(request):
 def hakkimizda(request):
     setting = Setting.objects.get()
     category = Category.objects.all()
-    context = {'setting': setting, 'category': category, 'page': 'hakkimizda'}
+    context = {'setting': setting, 'category': category, 'page': hakkimizda}
     return render(request, 'hakkimizda.html', context)
+
+def category_products(request,id,slug):
+    products = Product.objects.filter(category_id=id)
+    category = Category.objects.all()
+    categorydata = Category.objects.get(pk=id)
+    context = { 'category': category, 'products': products, 'categorydata': categorydata}
+    return render(request, 'products.html', context)
 
 def iletisim(request):
 
