@@ -25,8 +25,9 @@
                 <div class="container">
                     <div class="breadcrumb-content">
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li class="active">Single Product</li>
+                            <li><a href="/home/">Home</a></li>
+                            <li><a href="/product/{{ rs.id }}/{{ rs.slug }}" class="active">{{ rs.title }}</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -105,13 +106,27 @@
                                         </form>
                                     </div>
 
-                                   
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+    <script language="JavaScript">
+
+                                        sayi=0
+
+                                    </script>
+
+                    {% for rs in comments %}
+                     <script language="JavaScript">
+
+                                        sayi++
+
+                                    </script>
+                    {% endfor %}
             <!-- content-wraper end -->
             <!-- Begin Product Area -->
             <div class="product-area pt-35">
@@ -120,9 +135,13 @@
                         <div class="col-lg-12">
                             <div class="li-product-tab">
                                 <ul class="nav li-product-menu">
-                                   <li><a class="active" data-toggle="tab" href="#description"><span>Description</span></a></li>
-                                   <li><a data-toggle="tab" href="#product-details"><span>Product Details</span></a></li>
-                                   <li><a data-toggle="tab" href="#reviews"><span>Reviews</span></a></li>
+                                   <li><a class="active" data-toggle="tab" href="#description"><span>Açıklama</span></a></li>
+                                   <li><a data-toggle="tab" href="#product-details"><span>Detay</span></a></li>
+                                   <li><a data-toggle="tab" href="#reviews"><span>Yorumlar ( <script language="JavaScript">
+
+                                        document.write(sayi)
+
+                                    </script> )  </span></a></li>
                                 </ul>
                             </div>
                             <!-- Begin Li's Tab Menu Content Area -->
@@ -141,30 +160,56 @@
 
                             </div>
                         </div>
+
+
+
                         <div id="reviews" class="tab-pane" role="tabpanel">
                             <div class="product-reviews">
                                 <div class="product-details-comment-block">
-                                    <div class="comment-review">
-                                        <span>Grade</span>
-                                        <ul class="rating">
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                        </ul>
-                                    </div>
-                                    <div class="comment-author-infos pt-25">
-                                        <span>HTML 5</span>
-                                        <em>01-12-18</em>
-                                    </div>
-                                    <div class="comment-details">
-                                        <h4 class="title-block">Demo</h4>
-                                        <p>Plaza</p>
-                                    </div>
-                                    <div class="review-btn">
+                                    <div class="li-comment-section">
+                                        <div class="review-btn">
                                         <a class="review-links" href="#" data-toggle="modal" data-target="#mymodal">Write Your Review!</a>
+                                            <br>
+                                            <br>
                                     </div>
+
+                                        {% for rs in comments %}
+                                        <ul>
+                                            <li>
+                                                <div class="author-avatar pt-15">
+                                                    <img src="{% static 'images/product-details/user.png' %}" alt="User">
+                                                </div>
+                                                <div class="comment-body pl-15">
+
+                                                    <h5 class="comment-author pt-15">{{ rs.user.email }}</h5> <p>  <div class="review-rating pull-right">
+
+                                                        <i class="fa fa-star{% if rs.rate < 1 %}-o empty{% endif %}"> </i>
+                                                        <i class="fa fa-star{% if rs.rate < 2 %}-o empty{% endif %}"> </i>
+                                                        <i class="fa fa-star{% if rs.rate < 3 %}-o empty{% endif %}"> </i>
+                                                        <i class="fa fa-star{% if rs.rate < 4 %}-o empty{% endif %}"> </i>
+                                                        <i class="fa fa-star{% if rs.rate < 5 %}-o empty{% endif %}"> </i>
+
+                                                    </div></p>
+                                                    <div class="comment-post-date">
+                                                        {{ rs.create_at}}
+                                                    </div>
+                                                    <p>{{ rs.subject }}</p>
+                                                    <p1>{{ rs.comment }}</p1>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+
+
+                                        {% endfor %}
+
+</p>
+
+                                    </div>
+
+                                <p>
+
+
                                     <!-- Begin Quick View | Modal Area -->
                                     <div class="modal fade modal-wrapper" id="mymodal" >
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -174,11 +219,11 @@
                                                     <div class="modal-inner-area row">
                                                         <div class="col-lg-6">
                                                            <div class="li-review-product">
-                                                               <img src="{% static 'images/product/large-size/3.jpg' %}" alt="Li's Product">
+                                                               <img src="{{ product.image.url }}" alt="Li's Product" style="height: 200px " style="width: 200px">
                                                                <div class="li-review-product-desc">
-                                                                   <p class="li-product-name">Today is a good day Framed poster</p>
+                                                                   <p class="li-product-name">{{ product.title}}</p>
                                                                    <p>
-                                                                       <span>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant 360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With Exquisite Sound via Ring Radiator Technology. Stream And Control R3 Speakers Wirelessly With Your Smartphone. Sophisticated, Modern Design </span>
+                                                                       <span> {{ product.detail|safe }} </span>
                                                                    </p>
                                                                </div>
                                                            </div>
@@ -189,41 +234,47 @@
                                                                 <div class="feedback-area">
                                                                     <div class="feedback">
                                                                         <h3 class="feedback-title">Our Feedback</h3>
-                                                                        <form action="#">
-                                                                            <p class="your-opinion">
-                                                                                <label>Your Rating</label>
-                                                                                <span>
-                                                                                    <select class="star-rating">
-                                                                                      <option value="1">1</option>
-                                                                                      <option value="2">2</option>
-                                                                                      <option value="3">3</option>
-                                                                                      <option value="4">4</option>
-                                                                                      <option value="5">5</option>
-                                                                                    </select>
-                                                                                </span>
-                                                                            </p>
-                                                                            <p class="feedback-form">
-                                                                                <label for="feedback">Your Review</label>
-                                                                                <textarea id="feedback" name="comment" cols="45" rows="8" aria-required="true"></textarea>
-                                                                            </p>
-                                                                            <div class="feedback-input">
-                                                                                <p class="feedback-form-author">
-                                                                                    <label for="author">Name<span class="required">*</span>
-                                                                                    </label>
-                                                                                    <input id="author" name="author" value="" size="30" aria-required="true" type="text">
-                                                                                </p>
-                                                                                <p class="feedback-form-author feedback-form-email">
-                                                                                    <label for="email">Email<span class="required">*</span>
-                                                                                    </label>
-                                                                                    <input id="email" name="email" value="" size="30" aria-required="true" type="text">
-                                                                                    <span class="required"><sub>*</sub> Required fields</span>
-                                                                                </p>
-                                                                                <div class="feedback-btn pb-15">
-                                                                                    <a href="#" class="close" data-dismiss="modal" aria-label="Close">Close</a>
-                                                                                    <a href="#">Submit</a>
-                                                                                </div>
+                                                                        <form class="review-form" action="/product/addcomment/{{ product.id }}" method="POST">
+                                                                    {% csrf_token %}
+                                                                    <div class="form-group">
+
+                                                                        <input class="input" type="text" name="subject" id="id_subject" placeholder="Subject" />
+
+                                                                    </div>
+                                                                    <div class="form-group">
+
+                                                                        <textarea class="input" name="comment" id="id_comment" placeholder="Your review"> </textarea>
+
+                                                                    </div>
+
+                                                                    <div class="form-group">
+
+                                                                        <div class="input-rating">
+
+                                                                            <strong class="text-uppercase">Your rating: </strong>
+                                                                            <div class="star-rating">
+                                                                                <input type="radio" id="star5" name="rate" value="5" /> <label for="star5"></label>
+                                                                                <input type="radio" id="star4" name="rate" value="4" /> <label for="star4"></label>
+                                                                                <input type="radio" id="star3" name="rate" value="3" /> <label for="star3"></label>
+                                                                                <input type="radio" id="star2" name="rate" value="2" /> <label for="star2"></label>
+                                                                                <input type="radio" id="star1" name="rate" value="1" /> <label for="star1"></label>
                                                                             </div>
-                                                                        </form>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                    {% if user.id is not None %}
+                                                                    <button class="primary-btn">Send Comment</button>
+                                                                    {% else %}
+                                                                        Yorum eklemek icin <a href="/login ">Login</a> yapiniz..
+                                                                    {% endif %}
+
+
+
+
+
+
+                                                                </form>
                                                                     </div>
                                                                 </div>
                                                                 <!-- Feedback Area End Here -->

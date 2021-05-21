@@ -71,6 +71,8 @@
 /*----------------------------------------*/
 /*  1.1 Basic
 /*----------------------------------------*/
+
+
 body {
 	color: #242424;
 	font-family: 'Rubik', sans-serif;
@@ -1696,6 +1698,96 @@ textarea:focus {
 	font-size: 18px;
 	float: right;
 }
+
+.starRating:not(old){
+  display        : inline-block;
+  width          : 7.5em;
+  height         : 1.5em;
+  overflow       : hidden;
+  vertical-align : bottom;
+}
+
+.starRating:not(old) > input{
+  margin-right : -100%;
+  opacity      : 0;
+}
+
+.starRating:not(old) > label{
+  display         : block;
+  float           : right;
+  position        : relative;
+  background      : url('star-off.svg');
+  background-size : contain;
+}
+
+.starRating:not(old) > label:before{
+  content         : '';
+  display         : block;
+  width           : 1.5em;
+  height          : 1.5em;
+  background      : url('star-on.svg');
+  background-size : contain;
+  opacity         : 0;
+  transition      : opacity 0.2s linear;
+}
+
+.starRating:not(old) > label:hover:before,
+.starRating:not(old) > label:hover ~ label:before,
+.starRating:not(:hover) > :checked ~ label:before{
+  opacity : 1;
+}
+
+.txt-center {
+      text-align: center;
+    }
+.hide {
+      display: none;
+    }
+
+.clear {
+      float: none;
+      clear: both;
+    }
+
+.rating {
+        width: 90px;
+        unicode-bidi: bidi-override;
+        direction: rtl;
+        text-align: center;
+        position: relative;
+    }
+
+.rating > label {
+        float: right;
+        display: inline;
+        padding: 0;
+        margin: 0;
+        position: relative;
+        width: 1.1em;
+        cursor: pointer;
+        color: #000;
+    }
+
+.rating > label:hover,
+.rating > label:hover ~ label,
+rating > input.radio-btn:checked ~ label {
+        color: transparent;
+    }
+
+.rating > label:hover:before,
+.rating > label:hover ~ label:before,
+.rating > input.radio-btn:checked ~ label:before,
+.rating > input.radio-btn:checked ~ label:before {
+        content: "\2605";
+        position: absolute;
+        left: 0;
+        color: #FFD700;
+    }
+
+
+
+
+
 .li-button {
 	display: inline-block;
 	font-family: "Poppins", sans-serif;

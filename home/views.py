@@ -5,7 +5,7 @@ from django.contrib import messages
 
 # Create your views here.
 from home.models import Setting, ContactFormu, ContactFormMessage
-from product.models import Product, Category, Images
+from product.models import Product, Category, Images, Comment
 
 
 def index(request):
@@ -40,10 +40,13 @@ def category_products(request,id,slug):
 
 def product_detail(request,id,slug):
 
+
    category = Category.objects.all()
    product = Product.objects.get(pk=id)
+   comments = Comment.objects.filter(product_id=id, status='True')
    images = Images.objects.filter(product_id=id)
    context = {'category': category,
+              'comments': comments,
               'product': product,
               'images': images,
               }
