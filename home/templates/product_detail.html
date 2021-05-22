@@ -75,17 +75,7 @@
                                 <div class="product-info">
                                     <h2>{{ product.title}}</h2>
                                     <span class="product-details-ref">{{ product.description}}</span>
-                                    <div class="rating-box pt-20">
-                                        <ul class="rating rating-with-review-item">
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
-                                            <li class="review-item"><a href="#">Read Review</a></li>
-                                            <li class="review-item"><a href="#">Write Review</a></li>
-                                        </ul>
-                                    </div>
+
                                     <div class="price-box pt-20">
                                         <span class="new-price new-price-2">${{ product.price }}</span>
                                     </div>
@@ -181,7 +171,7 @@
                                                 </div>
                                                 <div class="comment-body pl-15">
 
-                                                    <h5 class="comment-author pt-15">{{ rs.user.email }}</h5> <p>  <div class="review-rating pull-right">
+                                                    <h5 class="comment-author pt-15">{{ rs.user.first_name }}</h5> <p>  <div class="review-rating pull-right">
 
                                                         <i class="fa fa-star{% if rs.rate < 1 %}-o empty{% endif %}"> </i>
                                                         <i class="fa fa-star{% if rs.rate < 2 %}-o empty{% endif %}"> </i>
