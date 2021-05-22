@@ -37,12 +37,15 @@
                                                 <ul class="ht-setting-list">
                                                     {% if user.id is not None %}
                                                     <li><a href="login-register.html"> {{ user.first_name }} {{ user.last_name }}</a></li>
+                                                        <li><a href="/user/"> My Profile </a></li>
+                                                        <li><a href="/logout/">Logout</a></li>
                                                     {% else %}
                                                         <li><a href="/login/"> Login </a></li>
                                                         <li><a href="/signup/"> Sign Up </a></li>
+
                                                     {% endif %}
-                                                    <li><a href="checkout.html">My Comments</a></li>
-                                                    <li><a href="/logout/">Logout</a></li>
+
+
                                                 </ul>
                                             </div>
                                         </li>
@@ -74,24 +77,7 @@
                                 <!-- Begin Header Middle Searchbox Area -->
                                 <form action="/search/" method="post" class="hm-searchbox">
                                     {% csrf_token %}
-                                    <select class="nice-select select-search-category">
-                                        <option value="0">All</option>
-                                        <option value="10">Laptops</option>
-                                        <option value="13">Cameras</option>
-                                        <option value="14">headphone</option>
-                                        <option value="15">Smartwatch</option>
-                                        <option value="16">Accessories</option>
-                                        <option value="14">headphone</option>
-                                        <option value="15">Smartwatch</option>
-                                        <option value="16">Accessories</option>
-                                        <option value="14">headphone</option>
-                                        <option value="15">Smartwatch</option>
-                                        <option value="16">Accessories</option>
-                                        <option value="14">headphone</option>
-                                        <option value="15">Smartwatch</option>
-                                        <option value="16">Accessories</option>
-                                        <option value="16">Accessories</option>
-                                    </select>
+
                                     <input name="query" type="text" placeholder="Enter your search key ...">
                                     <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
                                 </form>
