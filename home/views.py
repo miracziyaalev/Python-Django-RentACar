@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.contrib import messages
 
 # Create your views here.
-from home.forms import SearchForm
+from home.forms import SearchForm, SignUpForm
 from home.models import Setting, ContactFormu, ContactFormMessage
 from product.models import Product, Category, Images, Comment
 
@@ -105,9 +105,9 @@ def login_view(request):
         if user is not None:
             login(request, user)
             return HttpResponseRedirect('/')
-            ...
+
         else:
-            messages.error(request, "Hata! Kullanıcı adı veya şifre hatalı.")
+            messages.error(request, "Hata! Kullanıcı adı veya şifre hatalı..!")
             return HttpResponseRedirect('/login')
     # Return an 'invalid login' error message.
     category = Category.objects.all()
@@ -115,3 +115,24 @@ def login_view(request):
         'category': category,
     }
     return render(request, 'login.html', context)
+
+def signup_view(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Üyeliğiniz oluşturuldu. Lütfen giriş yapınız..") 
+            return HttpResponseRedirect('/login')
+        else:
+            messages.error(request, "Hata! Belirtilen kriterlere uyulmadi!")
+            return HttpResponseRedirect('/signup')
+
+    form = SignUpForm()
+    category = Category.objects.all()
+    context = {
+            'category': category,
+            'form': form,
+        }
+    return render(request, 'signup.html', context)
+
+
