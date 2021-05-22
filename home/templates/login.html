@@ -1,0 +1,80 @@
+
+
+{% extends "homebase.html" %}
+
+{% load static %}
+
+{% block title %} {{ setting.title }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %} {{ setting.description}} {% endblock %}
+
+{% block head %}
+
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+
+ {% endblock %}
+
+
+
+{% block content %}
+
+      <title> Login </title>
+            <!-- Li's Breadcrumb Area End Here -->
+            <!-- Begin Contact Main Page Area -->
+            <div class="contact-main-page mt-60 mb-40 mb-md-40 mb-sm-40 mb-xs-40">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 offset-lg-1 col-md-12 order-1 order-lg-2">
+                            <div class="contact-page-side-content">
+
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-lg-6 col-md-12 order-2 order-lg-1">
+                            <div class="contact-form-content pt-sm-55 pt-xs-55">
+                                <h3 class="contact-page-title">Login</h3>
+                                <div class="contact-form">
+
+                                        <div class="form-group">
+
+                                            {% if messages %}
+                                                {% for message in messages %}
+                                                    <div class = "alert alert-{{ message.tags }}" role="alert">
+                                                        {{ message }}
+                                                    </div>
+                                                {% endfor %}
+                                            {% endif %}
+
+
+
+                                            <form action="" method="post">
+                                                {% csrf_token %}
+                                                <div class="form-group">
+                                                    <input class="input" type="text" name="username" placeholder="Username"/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="input" type="password" name="password" placeholder="Password"/>
+                                                </div>
+
+
+
+
+                                                <input type="submit" value="Login">
+
+                                            </form>
+
+
+
+                                </div>
+                                <p class="form-messege"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}

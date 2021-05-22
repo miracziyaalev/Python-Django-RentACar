@@ -1,3 +1,4 @@
+from django.contrib.auth import logout, authenticate, login
 from django.core.checks import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
@@ -89,3 +90,28 @@ def product_search(request):
             return render(request, 'products_search.html', context)
 
     return HttpResponseRedirect('/')
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+    # Redirect to a success page.
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/')
+            ...
+        else:
+            messages.error(request, "Hata! Kullanıcı adı veya şifre hatalı.")
+            return HttpResponseRedirect('/login')
+    # Return an 'invalid login' error message.
+    category = Category.objects.all()
+    context = {
+        'category': category,
+    }
+    return render(request, 'login.html', context)
