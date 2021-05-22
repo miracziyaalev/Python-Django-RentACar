@@ -121,7 +121,7 @@ def signup_view(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Üyeliğiniz oluşturuldu. Lütfen giriş yapınız..") 
+            messages.success(request, "Üyeliğiniz oluşturuldu. Lütfen giriş yapınız..")
             return HttpResponseRedirect('/login')
         else:
             messages.error(request, "Hata! Belirtilen kriterlere uyulmadi!")
