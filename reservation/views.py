@@ -35,6 +35,8 @@ def addreservation(request, id):
             data.returndate = form.cleaned_data['returndate']
             data.returntime = form.cleaned_data['returntime']
 
+
+
             data.ip = request.META.get('REMOTE_ADDR')
             data.save()
             messages.success(request, "Rezervazyon Talebiniz Basariyla Gonderilmistir.")
