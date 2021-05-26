@@ -15,11 +15,14 @@ class Category (MPTTModel):
         ('False', 'Hayır'),
     )
 
+
+
     title = models.CharField(max_length=130)
     description = models.CharField(max_length=255)
     keywords = models.CharField(max_length=255)
     image = models.ImageField(blank=True, upload_to='images/')
     status = models.CharField(max_length=10, choices= STATUS)
+
     slug = models.SlugField(null=False , unique=True)
     parent = TreeForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
@@ -55,6 +58,9 @@ class Product(models.Model):
         ('Manuel', 'Manuel'),
     )
 
+
+
+
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     description = models.CharField(max_length=255)
@@ -63,6 +69,8 @@ class Product(models.Model):
     status = models.CharField(max_length=10, choices=STATUS)
     price = models.FloatField(blank=True)
     gear = models.CharField(max_length=10, choices=GEAR)
+
+    modelyear = models.CharField(max_length=30)
     type = models.CharField(max_length=30)
     number_of_seats = models.IntegerField(blank=True)
     engine = models.FloatField(blank=True)
