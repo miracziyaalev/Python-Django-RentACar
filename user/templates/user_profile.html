@@ -37,9 +37,30 @@
 
                         <div class="col-lg-6 col-md-12 order-2 order-lg-1">
                             <div class="contact-form-content pt-sm-55 pt-xs-55">
-                                <h3 class="contact-page-title">User Profile</h3>
+                                <h3 class="contact-page-title">Kullanıcı Profili</h3>
                                 <table class="shopping-cart-table table">
+                                <tr>
+                                     <th class="text-left">
 
+                                            <a href ="/user/update" class="review-links">Bilgileri Güncelle</a>
+                                         <br>
+
+
+                                    </th>
+                                    <th class="text-center">
+
+                                        <a href ="/user/password" class="review-links">Şifre Değiştir</a>
+                                    </th>
+
+                                </tr>
+
+                                    {% if messages %}
+                                                {% for message in messages %}
+                                                    <div class = "alert alert-{{ message.tags }}" role="alert">
+                                                        {{ message|safe }}
+                                                    </div>
+                                                {% endfor %}
+                                            {% endif %}
 
 
                                     <tr>

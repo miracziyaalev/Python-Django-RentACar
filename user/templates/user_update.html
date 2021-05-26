@@ -1,0 +1,75 @@
+
+
+{% extends "homebase.html" %}
+
+{% load static %}
+
+{% block title %} {{ profile.user_name }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% block description %} {{ setting.description}} {% endblock %}
+
+{% block head %}
+
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+
+ {% endblock %}
+
+
+
+{% block content %}
+
+      <title>User</title>
+            <!-- Li's Breadcrumb Area End Here -->
+            <!-- Begin Contact Main Page Area -->
+            <div class="contact-main-page mt-60 mb-40 mb-md-40 mb-sm-40 mb-xs-40">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 offset-lg-1 col-md-60 order-1 order-lg-2">
+                            <div class="contact-page-side-content">
+                                {% include "user_panel.html" %}
+                            </div>
+
+                            <br>
+                        </div>
+
+
+
+                        <div class="col-lg-6 col-md-12 order-2 order-lg-1">
+                            <div class="contact-form-content pt-sm-55 pt-xs-55">
+                                <h3 class="contact-page-title">Bilgileri Güncelle</h3>
+                                <table class="shopping-cart-table table">
+
+
+
+
+                            <div class="content-section">
+                                <div class="media">
+                                    <img src="{{ user.userprofile.image.url }}" style="height:150px ; border-radius: 45px">
+
+                            </div>
+
+                                <form method="POST" enctype = "multipart/form-data">
+                                    {% csrf_token %}
+                                    <fieldset class="form-group">
+                                        {{ user_form.as_p }}
+                                        {{ profile_form.as_p }}
+                                    </fieldset>
+                                    <div class="form-group">
+
+                                        <button class="btn btn-outline-info" type="submit">Update</button>
+
+                                    </div>
+
+
+
+                                </table>
+
+
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}
