@@ -1,0 +1,71 @@
+
+
+{% extends "homebase.html" %}
+
+{% load static %}
+
+{% block title %} Sıkça Sorulan Sorular {% endblock %}
+{% block keywords %}  {% endblock %}
+{% block description %}  {% endblock %}
+
+{% block head %}
+
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}' />
+
+ {% endblock %}
+
+
+
+{% block content %}
+
+
+           <div class="frequently-area pt-60 pb-50">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <!-- Begin Frequently Accordin -->
+                            <div class="frequently-accordion">
+                                <div id="accordion">
+                                  <div class="card actives">
+                                    <div class="card-header" id="headingOne">
+                                      <h5 class="mb-0">
+                                        <a class="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                          Sıkça Sorulan Sorular
+                                        </a>
+                                      </h5>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                      <div class="card-body">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id erat sagittis, faucibus metus malesuada, eleifend turpis. Mauris semper augue id nisl aliquet, a porta lectus mattis. Nulla at tortor augue.
+                                      </div>
+                                    </div>
+                                  </div>
+                                    {% for rs in faq %}
+                                  <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                      <h5 class="mb-0">
+                                        <a class="collapsed" data-toggle="collapse" data-target="#{{ rs.id }}" aria-expanded="false" aria-controls="collapseTwo">
+                                          {{ rs.question }}
+                                        </a>
+                                      </h5>
+                                    </div>
+                                    <div id="{{ rs.id }}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                      <div class="card-body">
+                                       {{ rs.answer }}
+                                      </div>
+                                    </div>
+                                  </div>
+                                    {% endfor %}
+
+                            </div>
+                            <!--Frequently Accordin End Here -->
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+{% endblock %}
