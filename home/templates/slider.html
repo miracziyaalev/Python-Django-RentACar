@@ -33,14 +33,23 @@
                         <!-- Begin Li Banner Area -->
                         <div class="col-lg-4 col-md-4 text-center pt-xs-30">
                             <div class="li-banner">
-                                <a href="#">
-                                    <img src="{% static 'images/banner/1_1.jpg' %}" alt="">
+                                {% for rs in bannerdata1 %}
+                                <a href="/product/{{ rs.id }}/{{ rs.slug }}">
+
+                                    <img src="{{ rs.image.url }}" style="height: 233px" alt="">
+
+
                                 </a>
+                                {% endfor %}
                             </div>
                             <div class="li-banner mt-15 mt-sm-30 mt-xs-30">
-                                <a href="#">
-                                    <img src="{% static 'images/banner/1_2.jpg' %}" alt="">
+                                {% for rs in bannerdata2 %}
+                                <a href="/product/{{ rs.id }}/{{ rs.slug }}">
+
+                                    <img src="{{ rs.image.url }}" style="height: 233px" alt="">
+
                                 </a>
+                                {% endfor %}
                             </div>
                         </div>
                         <!-- Li Banner Area End Here -->

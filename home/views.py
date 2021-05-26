@@ -13,16 +13,22 @@ from product.models import Product, Category, Images, Comment
 def index(request):
     setting = Setting.objects.get()
     sliderdata = Product.objects.all()[:4]
+    bannerdata1 = Product.objects.all().order_by('?')[:1]
+    bannerdata2 = Product.objects.all().order_by('-id')[:1]
     category = Category.objects.all()
     dayproducts=Product.objects.all()[:6]
+
     lastproducts = Product.objects.all().order_by('-id')[:6]
     randomproducts = Product.objects.all().order_by('?')[:6]
     context = {'setting': setting,
                'category': category,
                'page': 'home',
                'sliderdata': sliderdata,
+               'bannerdata1': bannerdata1,
+               'bannerdata2': bannerdata2,
                'dayproducts': dayproducts,
                'lastproducts': lastproducts,
+
                'randomproducts': randomproducts
                }
     return render(request, 'index.html', context)

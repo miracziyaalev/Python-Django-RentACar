@@ -74,7 +74,6 @@
                             <div class="product-details-view-content pt-60">
                                 <div class="product-info">
                                     <h2>{{ product.title}}</h2>
-                                    <span class="product-details-ref">{{ product.description}}</span>
 
                                     <div class="price-box pt-20">
                                         <span class="new-price new-price-2">${{ product.price }}</span>
@@ -83,9 +82,22 @@
                                         <p>
                                             <span>
                                                 {{ product.detail|safe }}
+                                                <h3>
+                                        <span class="product-details-ref">|| Vites : {{ product.gear}}  ||</span>
+
+                                        <span class="product-details-ref"> Koltuk Sayısı : {{ product.number_of_seats}}  ||</span>
+
+                                        <span class="product-details-ref"> Motor Gücü : {{ product.engine}}  ||</span>
+
+                                        <span class="product-details-ref"> Kategori : {{ product.type}}  ||</span>
+
+
+                                                </h3>
                                             </span>
                                         </p>
                                     </div>
+
+
 
                                     <div class="single-add-to-cart">
                                         <form action="#" class="cart-quantity">
