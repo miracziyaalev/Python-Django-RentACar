@@ -5,7 +5,7 @@ from reservation.models import Reservation
 
 
 class ReservationAdmin(admin.ModelAdmin):
-    list_display = ['user', 'product', 'returndate', 'note', 'days' ,'status']
+    list_display = ['user', 'product','rezdate', 'reztime', 'returndate', 'returntime', 'note', 'days' ,'status']
     list_filter = ['status']
 
 

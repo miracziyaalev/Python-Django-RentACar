@@ -222,10 +222,20 @@
                                                         <div class="col-lg-6">
                                                            <div class="li-review-product">
                                                                <img src="{{ product.image.url }}" alt="Li's Product" style="height: 200px " style="width: 200px">
+                                                           <div class="price-box pt-20">
+                                        <span class="new-price new-price-2">${{ product.price }}</span>
+                                    </div>
                                                                <div class="li-review-product-desc">
                                                                    <p class="li-product-name">{{ product.title}}</p>
                                                                    <p>
                                                                        <span> {{ product.detail|safe }} </span>
+                                                                          {% if messages %}
+                                                {% for message in messages %}
+                                                    <div class = "alert alert-{{ message.tags }}" role="alert">
+                                                        {{ message }}
+                                                    </div>
+                                                {% endfor %}
+                                            {% endif %}
                                                                    </p>
                                                                </div>
                                                            </div>
@@ -299,6 +309,9 @@
                                                         <div class="col-lg-6">
                                                            <div class="li-review-product">
                                                                <img src="{{ product.image.url }}" alt="Li's Product" style="height: 200px " style="width: 200px">
+                                                               <div class="price-box pt-20">
+                                        <span class="new-price new-price-2">Günlük Ücret: ${{ product.price }}</span>
+                                    </div>
                                                                <div class="li-review-product-desc">
                                                                    <p class="li-product-name">{{ product.title}}</p>
                                                                    <p>
@@ -307,6 +320,7 @@
                                                                </div>
                                                            </div>
                                                         </div>
+
                                                         <div class="col-lg-6">
                                                             <div class="li-review-content">
                                                                 <!-- Begin Feedback Area -->
@@ -333,7 +347,6 @@
 
                                                                     </div>
 
-
                                                                     <div class="form-group">
 
                                                                         <input class="input" name="returntime" id="id_returntime" placeholder="returntime"/>
@@ -345,9 +358,19 @@
                                                                         <input class="input" name="days" id="id_days" placeholder="days"/>
 
                                                                     </div>
+                                                                        <div class="form-group">
+
+                                                                        <input class="input" name="rezplace" id="id_rezplace" />
+
+                                                                    </div>
+                                                                        <div class="form-group">
+
+                                                                        <input class="input" name="returnplace" id="id_returnplace" />
+
+                                                                    </div>
 
                                                                     {% if user.id is not None %}
-                                                                    <button class="primary-btn">Send Comment</button>
+                                                                    <button class="primary-btn">Send Reservation Request</button>
                                                                     {% else %}
                                                                         Rezervasyon yapabilmek icin <a href="/login ">Login</a> yapiniz..
                                                                     {% endif %}

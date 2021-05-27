@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from home.models import UserProfile
 from product.models import Category, Comment
+from reservation.models import Reservation
 from user.forms import UserUpdateForm, ProfileUpdateForm
 from django.core.checks import messages
 from django.contrib import messages
@@ -74,11 +75,31 @@ def comments(request):
     return render(request, 'user_comments.html', context)
 
 @login_required(login_url='/login')
+def reservations(request):
+    category = Category.objects.all()
+    current_user = request.user
+    reservations = Reservation.objects.filter(user_id=current_user.id)
+    context = {
+        'category' : category,
+        'reservations' : reservations,
+
+    }
+    return render(request, 'user_reservations.html', context)
+
+@login_required(login_url='/login')
 def deletecomment(request, id):
     current_user = request.user
     Comment.objects.filter(id=id, user_id=current_user.id).delete()
     messages.success(request, 'Yorumunuz silindi.')
     return HttpResponseRedirect('/user/comments')
+
+@login_required(login_url='/login')
+def deletereservations(request, id):
+    current_user = request.user
+    Reservation.objects.filter(id=id, user_id=current_user.id).delete()
+    messages.success(request, 'Rezervasyonunuz silindi')
+    return HttpResponseRedirect('/user/reservations')
+
 
 
 

@@ -12,6 +12,18 @@ class Reservation(models.Model):
         ('False', 'Hayır'),
     )
 
+    rezplace = (
+        ('İstanbul"', 'İstanbul'),
+        ('Ankara', 'Ankara'),
+        ('İzmir', 'İzmir'),
+    )
+
+    returnplace = (
+        ('İstanbul"', 'İstanbul'),
+        ('Ankara', 'Ankara'),
+        ('İzmir', 'İzmir'),
+    )
+
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     rezdate = models.CharField(max_length=50)
@@ -19,6 +31,8 @@ class Reservation(models.Model):
     returndate = models.CharField(max_length=50)
     returntime = models.CharField(max_length=200)
     days = models.IntegerField(blank=True)
+    rezplace = models.CharField(max_length=20, choices=rezplace, default='İstanbul')
+    returnplace = models.CharField(max_length=20, choices=returnplace, default='İstanbul')
 
     status = models.CharField(max_length=10, choices=STATUS, default='New')
     ip = models.CharField(blank=True, max_length=20)
@@ -33,7 +47,7 @@ class Reservation(models.Model):
 class ReservationFormu(ModelForm):
     class Meta:
         model = Reservation
-        fields = ['rezdate', 'reztime', 'returndate', 'returntime', 'days']
+        fields = ['rezdate', 'reztime', 'returndate', 'returntime', 'days','rezplace', 'returnplace']
 
 
 # Create your models here.
