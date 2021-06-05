@@ -12,40 +12,25 @@ class Reservation(models.Model):
         ('False', 'Hayır'),
     )
 
-    rezplace = (
-        ('İstanbul"', 'İstanbul'),
-        ('Ankara', 'Ankara'),
-        ('İzmir', 'İzmir'),
-    )
-
-    returnplace = (
-        ('İstanbul"', 'İstanbul'),
-        ('Ankara', 'Ankara'),
-        ('İzmir', 'İzmir'),
-    )
 
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    rezdate = models.CharField(max_length=50)
-    reztime = models.CharField(max_length=200)
-    returndate = models.CharField(max_length=50)
-    returntime = models.CharField(max_length=200)
-    days = models.IntegerField(blank=True)
-
+    rezdate = models.DateField()
+    reztime = models.TimeField(auto_now=False, auto_now_add=False)
+    returndate = models.DateField()
+    returntime = models.TimeField(auto_now=False, auto_now_add=False)
     status = models.CharField(max_length=10, choices=STATUS, default='New')
     ip = models.CharField(blank=True, max_length=20)
     note = models.CharField(blank=True, max_length=100)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return self.product.title
 
 
-class ReservationFormu(ModelForm):
+class ReservationForm(ModelForm):
     class Meta:
         model = Reservation
-        fields = ['rezdate', 'reztime', 'returndate', 'returntime', 'days']
+        fields = ['rezdate', 'reztime', 'returndate', 'returntime']
 
 
 # Create your models here.

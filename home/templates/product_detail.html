@@ -110,37 +110,32 @@
                                                                 <div class="feedback-area">
                                                                     <div class="feedback">
                                                                         <br>
-                                                                        <form class="review-form" action="/reservation/addreservation/{{ product.id }}" method="POST">
-                                                                    {% csrf_token %}
+                                                                        <form class="row" action="/reservation/sendreserve/{{ product.id }}" name="reserveform" method="post">
+                                                                        {% csrf_token %}
                                                                     <div class="form-group">
 
-                                                                        <input class="input" type="text" name="rezdate" id="id_rezdate" placeholder="rezdate" />
+                                                                        <input class="input" type="date" name="rezdate" id="rezdate"/>
 
                                                                     </div>
 
                                                                             <div class="form-group">
 
-                                                                        <input class="input" type="text" name="reztime" id="id_reztime" placeholder="reztime" />
+                                                                        <input class="input" type="time" name="reztime" id="reztime"/>
 
                                                                     </div>
 
                                                                         <div class="form-group">
 
-                                                                        <input class="input" type="text" name="returndate" id="id_returndate" placeholder="returndate" />
+                                                                        <input class="input" type="date" name="returndate" id="returndate"/>
 
                                                                     </div>
 
                                                                     <div class="form-group">
 
-                                                                        <input class="input" name="returntime" id="id_returntime" placeholder="returntime"/>
+                                                                        <input class="input" type="time" name="returntime" id="returntime"/>
 
                                                                     </div>
 
-                                                                        <div class="form-group">
-
-                                                                        <input class="input" name="days" id="id_days" placeholder="days"/>
-
-                                                                    </div>
 
 
                                                                     {% if user.id is not None %}

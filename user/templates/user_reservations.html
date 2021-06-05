@@ -55,8 +55,7 @@
                                     <th class="text-left"> Product</th>
                                     <th class="text-left"> RezDate</th>
                                     <th class="text-left"> ReturnDate</th>
-                                    <th class="text-left"> days</th>
-                                    <th class="text-left"> total</th>
+
                                     <th class="text-left"> Not</th>
                                     <th class="text-left"> Status</th>
 
@@ -66,11 +65,7 @@
 
                                 {% for rs in reservations %}
                                     <tr>
-                                    <script language="JavaScript">
 
-                                        total={{ rs.product.price }}*{{ rs.days }}
-
-                                    </script>
 
 
                                     <td class="text-left">
@@ -79,12 +74,8 @@
 
                                     <td class="text-left"> {{ rs.rezdate }}</td>
                                     <td class="text-left"> {{ rs.returndate }}</td>
-                                    <td class="text-left"> {{ rs.days }}</td>
-                                    <td class="text-left"> $ <script language="JavaScript">
 
-                                        document.write(total)
 
-                                    </script> </td>
                                     <td class="text-left"> {{ rs.note }}</td>
                                     <td class="text-left"> {{ rs.status }}</td>
                                     {% if rs.status == 'New' %}
