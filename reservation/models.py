@@ -31,8 +31,6 @@ class Reservation(models.Model):
     returndate = models.CharField(max_length=50)
     returntime = models.CharField(max_length=200)
     days = models.IntegerField(blank=True)
-    rezplace = models.CharField(max_length=20, choices=rezplace, default='İstanbul')
-    returnplace = models.CharField(max_length=20, choices=returnplace, default='İstanbul')
 
     status = models.CharField(max_length=10, choices=STATUS, default='New')
     ip = models.CharField(blank=True, max_length=20)
@@ -47,7 +45,7 @@ class Reservation(models.Model):
 class ReservationFormu(ModelForm):
     class Meta:
         model = Reservation
-        fields = ['rezdate', 'reztime', 'returndate', 'returntime', 'days','rezplace', 'returnplace']
+        fields = ['rezdate', 'reztime', 'returndate', 'returntime', 'days']
 
 
 # Create your models here.

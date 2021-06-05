@@ -95,19 +95,71 @@
                                                 </h3>
                                             </span>
                                         </p>
+                                        {% if messages %}
+                                                {% for message in messages %}
+                                                    <div class = "alert alert-{{ message.tags }}" role="alert">
+                                                        {{ message }}
+                                                    </div>
+                                                {% endfor %}
+                                            {% endif %}
                                     </div>
 
+                                    <div class="col-lg-6">
+                                                            <div class="li-review-content">
+                                                                <!-- Begin Feedback Area -->
+                                                                <div class="feedback-area">
+                                                                    <div class="feedback">
+                                                                        <br>
+                                                                        <form class="review-form" action="/reservation/addreservation/{{ product.id }}" method="POST">
+                                                                    {% csrf_token %}
+                                                                    <div class="form-group">
+
+                                                                        <input class="input" type="text" name="rezdate" id="id_rezdate" placeholder="rezdate" />
+
+                                                                    </div>
+
+                                                                            <div class="form-group">
+
+                                                                        <input class="input" type="text" name="reztime" id="id_reztime" placeholder="reztime" />
+
+                                                                    </div>
+
+                                                                        <div class="form-group">
+
+                                                                        <input class="input" type="text" name="returndate" id="id_returndate" placeholder="returndate" />
+
+                                                                    </div>
+
+                                                                    <div class="form-group">
+
+                                                                        <input class="input" name="returntime" id="id_returntime" placeholder="returntime"/>
+
+                                                                    </div>
+
+                                                                        <div class="form-group">
+
+                                                                        <input class="input" name="days" id="id_days" placeholder="days"/>
+
+                                                                    </div>
 
 
-                                    <div class="single-add-to-cart">
-                                        <form action="#" class="cart-quantity">
-                                            <div class="quantity">
+                                                                    {% if user.id is not None %}
+                                                                    <button class="primary-btn">Send Reservation Request</button>
+                                                                    {% else %}
+                                                                        Rezervasyon yapabilmek icin <a href="/login ">Login</a> yapiniz..
+                                                                    {% endif %}
 
-                                            </div>
-                                            <a class="review-links" href="#" data-toggle="modal" data-target="#mymodal2">Rent Now!</a>
-                                        </form>
-                                    </div>
 
+
+
+
+
+                                                                </form>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Feedback Area End Here -->
+                                                            </div>
+                                                        </div>
 
                                 </div>
                             </div>
@@ -236,6 +288,8 @@
                                                     </div>
                                                 {% endfor %}
                                             {% endif %}
+
+
                                                                    </p>
                                                                </div>
                                                            </div>
@@ -299,99 +353,6 @@
                                     </div>
                                     <!-- Quick View | Modal Area End Here -->
 
-                                  <!-- Begin Quick View | Modal Area -->
-                                    <div class="modal fade modal-wrapper" id="mymodal2" >
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-body">
-                                                    <h3 class="review-page-title">Hemen Kirala</h3>
-                                                    <div class="modal-inner-area row">
-                                                        <div class="col-lg-6">
-                                                           <div class="li-review-product">
-                                                               <img src="{{ product.image.url }}" alt="Li's Product" style="height: 200px " style="width: 200px">
-                                                               <div class="price-box pt-20">
-                                        <span class="new-price new-price-2">Günlük Ücret: ${{ product.price }}</span>
-                                    </div>
-                                                               <div class="li-review-product-desc">
-                                                                   <p class="li-product-name">{{ product.title}}</p>
-                                                                   <p>
-                                                                       <span> {{ product.detail|safe }} </span>
-                                                                   </p>
-                                                               </div>
-                                                           </div>
-                                                        </div>
-
-                                                        <div class="col-lg-6">
-                                                            <div class="li-review-content">
-                                                                <!-- Begin Feedback Area -->
-                                                                <div class="feedback-area">
-                                                                    <div class="feedback">
-                                                                        <br>
-                                                                        <form class="review-form" action="/reservation/addreservation/{{ product.id }}" method="POST">
-                                                                    {% csrf_token %}
-                                                                    <div class="form-group">
-
-                                                                        <input class="input" type="text" name="rezdate" id="id_rezdate" placeholder="rezdate" />
-
-                                                                    </div>
-
-                                                                            <div class="form-group">
-
-                                                                        <input class="input" type="text" name="reztime" id="id_reztime" placeholder="reztime" />
-
-                                                                    </div>
-
-                                                                        <div class="form-group">
-
-                                                                        <input class="input" type="text" name="returndate" id="id_returndate" placeholder="returndate" />
-
-                                                                    </div>
-
-                                                                    <div class="form-group">
-
-                                                                        <input class="input" name="returntime" id="id_returntime" placeholder="returntime"/>
-
-                                                                    </div>
-
-                                                                        <div class="form-group">
-
-                                                                        <input class="input" name="days" id="id_days" placeholder="days"/>
-
-                                                                    </div>
-                                                                        <div class="form-group">
-
-                                                                        <input class="input" name="rezplace" id="id_rezplace" />
-
-                                                                    </div>
-                                                                        <div class="form-group">
-
-                                                                        <input class="input" name="returnplace" id="id_returnplace" />
-
-                                                                    </div>
-
-                                                                    {% if user.id is not None %}
-                                                                    <button class="primary-btn">Send Reservation Request</button>
-                                                                    {% else %}
-                                                                        Rezervasyon yapabilmek icin <a href="/login ">Login</a> yapiniz..
-                                                                    {% endif %}
-
-
-
-
-
-
-                                                                </form>
-                                                                    </div>
-                                                                </div>
-                                                                <!-- Feedback Area End Here -->
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Quick View | Modal Area End Here -->
                                 </div>
                             </div>
                         </div>

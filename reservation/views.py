@@ -34,8 +34,7 @@ def addreservation(request, id):
             data.reztime = form.cleaned_data['reztime']
             data.returndate = form.cleaned_data['returndate']
             data.returntime = form.cleaned_data['returntime']
-            data.rezplace = form.cleaned_data['rezplace']
-            data.returnplace = form.cleaned_data['returnplace']
+
             data.days = form.cleaned_data['days']
 
 
