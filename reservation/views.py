@@ -24,17 +24,20 @@ def sendreserve(request, id):
         form = ReservationForm(request.POST)
         if form.is_valid():
             data = Reservation()  # create relation with model
-            data.reztime = form.cleaned_data['reztime']
-            data.returntime = form.cleaned_data['returntime']
-            data.returndate = form.cleaned_data['returndate']
-            data.rezdate = form.cleaned_data['rezdate']
+            data.reservationdate = form.cleaned_data['reservationdate']
+            data.stopdate = form.cleaned_data['stopdate']
+            delta = form.cleaned_data['stopdate'] - form.cleaned_data['reservationdate']
+            days = delta.days
+            if delta.seconds > 0:
+                days = delta.days + 1
+
             data.ip = request.META.get('REMOTE_ADDR')
-            data.total = total
+            data.total = total * Product.objects.get(id=id).price * days
             data.product_id = id
             current_user = request.user
             data.user_id = current_user.id
             data.save()  # save data to table
             messages.success(request, "Rezervasyonunuz Alınmıştır. Teşekkür ederiz.")
             return HttpResponseRedirect(url)
-
+        messages.error(request, "Lütfen boş bırakılan yerleri doldurunuz...!")
     return HttpResponseRedirect(url)

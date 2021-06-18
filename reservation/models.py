@@ -14,12 +14,9 @@ class Reservation(models.Model):
 
 
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    rezdate = models.DateField()
-    reztime = models.TimeField(auto_now=False, auto_now_add=False)
-    returndate = models.DateField()
-    returntime = models.TimeField(auto_now=False, auto_now_add=False)
+    reservationdate = models.DateTimeField()
+    stopdate = models.DateTimeField()
     total = models.IntegerField()
     status = models.CharField(max_length=10, choices=STATUS, default='New')
     ip = models.CharField(blank=True, max_length=20)
@@ -32,7 +29,7 @@ class Reservation(models.Model):
 class ReservationForm(ModelForm):
     class Meta:
         model = Reservation
-        fields = ['rezdate', 'reztime', 'returndate', 'returntime']
+        fields = ['reservationdate', 'stopdate']
 
 
 # Create your models here.

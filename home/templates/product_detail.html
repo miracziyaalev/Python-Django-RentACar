@@ -115,34 +115,24 @@
 
                                                                         <form class="row" action="/reservation/sendreserve/{{ product.id }}" name="reserveform" method="post">
                                                                         {% csrf_token %}
-                                                                        <h7> Alış Tarihi:   </h7> &ensp;&ensp;&ensp;&ensp;
-                                                                    <div class="form-group">
-
-                                                                        <input class="input" type="date" name="rezdate" id="rezdate"/>
-
-                                                                    </div>
-
-                                                                    <div class="form-group">
-
-                                                                        <input class="input" type="time" name="reztime" id="reztime"/>
+                                                                        <div class="form-group">
+                                                                        <label> Alış Tarihi:</label>
+                                                                        <input class="input" type="datetime-local" name="reservationdate" id="reservationdate"/>
 
                                                                     </div>
 
-                                                                        <h7> Teslim Tarihi:   </h7> &ensp;&nbsp;
-                                                                    <div class="form-group">
-
-                                                                        <input class="input" type="date" name="returndate" id="returndate"/>
-
-                                                                    </div>
-
-                                                                    <div class="form-group">
-
-                                                                        <input class="input" type="time" name="returntime" id="returntime"/>
+                                                                         <div class="form-group">
+                                                                        <label> Teslim Tarihi:</label>
+                                                                        <input class="input" type="datetime-local" name="stopdate" id="stopdate"/>
 
                                                                     </div>
 
 
-                                                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+
+                                                                        <br>
+
+
+                                                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
                                                                     {% if user.id is not None %}
                                                                     <button class="primary-btn">Rezervasyon İsteği Gönder</button>
                                                                     {% else %}

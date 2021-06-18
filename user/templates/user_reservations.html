@@ -55,6 +55,7 @@
                                     <th class="text-left"> Product</th>
                                     <th class="text-left"> RezDate</th>
                                     <th class="text-left"> ReturnDate</th>
+                                    <th class="text-left"> Ücret</th>
 
                                     <th class="text-left"> Not</th>
                                     <th class="text-left"> Status</th>
@@ -72,8 +73,9 @@
                                         <a href="/product/{{ rs.product_id }}/{{ rs.product.slug }}">{{ rs.product.title }} </a>
                                         </td>
 
-                                    <td class="text-left"> {{ rs.rezdate }}</td>
-                                    <td class="text-left"> {{ rs.returndate }}</td>
+                                    <td class="text-left"> {{ rs.reservationdate }}</td>
+                                    <td class="text-left"> {{ rs.stopdate }}</td>
+                                    <td class="text-left"> ${{ rs.total }}</td>
 
 
                                     <td class="text-left"> {{ rs.note }}</td>
