@@ -22,13 +22,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-15 order-1 order-lg-2">
-                            <!-- Begin Li's Banner Area -->
-                            <div class="single-banner shop-page-banner">
-                                <a href="#">
-                                    <img src="{% static 'images/bg-banner/2.jpg' %}" alt="Li's Static Banner">
-                                </a>
-                            </div>
-                            <!-- Li's Banner Area End Here -->
+
                             <!-- shop-top-bar start -->
                             <div class="shop-top-bar mt-30">
                                 <div class="shop-bar-inner">
@@ -54,7 +48,7 @@
                                         <div class="product-area shop-product-area">
                                             <div class="row">
                                                 {% for rs in products %}
-                                                <div class="col-lg-5 col-md-4 col-sm-6 mt-40">
+                                                <div class="col-lg-4 col-md-4 col-sm-6 mt-40">
                                                     <!-- single-product-wrap start -->
                                                     <div class="single-product-wrap">
                                                         <div class="product-image">
@@ -69,14 +63,18 @@
                                                                 <div class="price-box">
                                                                     <span class="new-price">${{ rs.price }}</span>
                                                                 </div>
+
                                                             </div>
                                                             <div class="add-actions">
-                                                                <ul class="add-actions-link">
 
-                                                                    <li  class="add-cart active"><a href="/product/{{ rs.id }}/{{ rs.slug }}">Vites: {{ rs.gear }}  </a></li>
-                                                                    <li class="add-cart active"><a href="/product/{{ rs.id }}/{{ rs.slug }}">Motor: {{ rs.engine }}  </a></li>
-                                                                     <li class="add-cart active"><a href="/product/{{ rs.id }}/{{ rs.slug }}">Koltuk Sayısı: {{ rs.number_of_seats}}</a></li>
-                                                                </ul>
+                                                                 <h7><a class="product_name" href="/product/{{ rs.id }}/{{ rs.slug }}">Vites : {{ rs.gear}}</a></h7>
+                                                                <br>
+                                                                <h7><a class="product_name" href="/product/{{ rs.id }}/{{ rs.slug }}">Motor: {{ rs.engine}}</a></h7>
+                                                                <br>
+                                                                <h7><a class="product_name" href="/product/{{ rs.id }}/{{ rs.slug }}">Koltuk Sayısı: {{ rs.number_of_seats}}</a></h7>
+                                                                <br>
+                                                                <h7><a class="product_name" href="/product/{{ rs.id }}/{{ rs.slug }}">Model: {{ rs.modelyear}}</a></h7>
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -99,7 +97,7 @@
                                                             <a href="/product/{{ rs.id }}/{{ rs.slug }}">
                                                                 <img src="{{ rs.image.url }}" alt="Li's Product Image">
                                                             </a>
-                                                            <span class="sticker">New</span>
+
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-5 col-md-7">
@@ -119,10 +117,10 @@
                                                         <div class="shop-add-action mb-xs-30">
                                                             <ul class="add-actions-link">
 
-                                                                <li class="wishlist"><a href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.gear }}</a></li>
-                                                                <li class="wishlist"><a href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.engine }}</a></li>
-                                                                <li class="wishlist"><a href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.number_of_seats }}</a></li>
-                                                                <li class="wishlist"><a href="/product/{{ rs.id }}/{{ rs.slug }}"></i>{{ rs.type}}</a></li>
+                                                                <li class="wishlist"><a href="/product/{{ rs.id }}/{{ rs.slug }}">Vites: {{ rs.gear }}</a></li>
+                                                                <li class="wishlist"><a href="/product/{{ rs.id }}/{{ rs.slug }}">Motor: {{ rs.engine }}</a></li>
+                                                                <li class="wishlist"><a href="/product/{{ rs.id }}/{{ rs.slug }}">Koltuk Sayısı: {{ rs.number_of_seats }}</a></li>
+                                                                <li class="wishlist"><a href="/product/{{ rs.id }}/{{ rs.slug }}"></i>Model: {{ rs.modelyear}}</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>

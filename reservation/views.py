@@ -3,8 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
-
-
+import product
+from product import models
+from product.models import Product
 from reservation.models import ReservationForm, Reservation
 
 
@@ -14,8 +15,10 @@ def index(request):
 
 
 @login_required(login_url="/login")
-def sendreserve(request,id):
+def sendreserve(request, id):
     url = request.META.get('HTTP_REFERER')  # get last url
+    total = 1
+
     # return HttpResponse(url)
     if request.method == 'POST':  # check post
         form = ReservationForm(request.POST)
@@ -26,6 +29,7 @@ def sendreserve(request,id):
             data.returndate = form.cleaned_data['returndate']
             data.rezdate = form.cleaned_data['rezdate']
             data.ip = request.META.get('REMOTE_ADDR')
+            data.total = total
             data.product_id = id
             current_user = request.user
             data.user_id = current_user.id

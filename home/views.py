@@ -12,11 +12,11 @@ from product.models import Product, Category, Images, Comment
 
 def index(request):
     setting = Setting.objects.get()
-    sliderdata = Product.objects.all()[:4]
+    sliderdata = Product.objects.all().order_by('?')[:6]
     bannerdata1 = Product.objects.all().filter(category_id=10)[:1]
     bannercon1 = Product.objects.all().filter()
     suvs = Product.objects.all().filter(category__parent_id=5)[:10]
-    sedan = Product.objects.all().filter(category__parent_id=5)[:10]
+    sedan = Product.objects.all().filter(category__parent_id=12)[:10]
     hatchback = Product.objects.all().filter(category__parent_id=8)[:10]
     bannerdata2 = Product.objects.all().order_by('-id')[:1]
     category = Category.objects.all()

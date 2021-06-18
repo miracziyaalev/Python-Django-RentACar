@@ -52,7 +52,7 @@
                                     {% for rs in images %}
                                     <div class="lg-image">
 
-                                            <img src="{{ rs.image.url }}" alt="product image">
+                                            <img src="{{ rs.image.url }}" alt="product image" style="height: 300px">
                                         </a>
                                     </div>
                                     {% endfor %}
@@ -91,6 +91,8 @@
 
                                         <span class="product-details-ref"> Kategori : {{ product.type}}  ||</span>
 
+                                        <span class="product-details-ref"> Model : {{ product.modelyear}}  ||</span>
+
 
                                                 </h3>
                                             </span>
@@ -110,21 +112,24 @@
                                                                 <div class="feedback-area">
                                                                     <div class="feedback">
                                                                         <br>
+
                                                                         <form class="row" action="/reservation/sendreserve/{{ product.id }}" name="reserveform" method="post">
                                                                         {% csrf_token %}
+                                                                        <h7> Alış Tarihi:   </h7> &ensp;&ensp;&ensp;&ensp;
                                                                     <div class="form-group">
 
                                                                         <input class="input" type="date" name="rezdate" id="rezdate"/>
 
                                                                     </div>
 
-                                                                            <div class="form-group">
+                                                                    <div class="form-group">
 
                                                                         <input class="input" type="time" name="reztime" id="reztime"/>
 
                                                                     </div>
 
-                                                                        <div class="form-group">
+                                                                        <h7> Teslim Tarihi:   </h7> &ensp;&nbsp;
+                                                                    <div class="form-group">
 
                                                                         <input class="input" type="date" name="returndate" id="returndate"/>
 
@@ -137,11 +142,11 @@
                                                                     </div>
 
 
-
+                                                                    &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
                                                                     {% if user.id is not None %}
-                                                                    <button class="primary-btn">Send Reservation Request</button>
+                                                                    <button class="primary-btn">Rezervasyon İsteği Gönder</button>
                                                                     {% else %}
-                                                                        Rezervasyon yapabilmek icin <a href="/login ">Login</a> yapiniz..
+                                                                        Rezervasyon yapabilmek icin <a href="/login ">Giriş</a> yapiniz..
                                                                     {% endif %}
 
 
@@ -217,7 +222,7 @@
                                 <div class="product-details-comment-block">
                                     <div class="li-comment-section">
                                         <div class="review-btn">
-                                        <a class="review-links" href="#" data-toggle="modal" data-target="#mymodal">Write Your Review!</a>
+                                        <a class="review-links" href="#" data-toggle="modal" data-target="#mymodal">Yorum Yaz!</a>
                                             <br>
                                             <br>
                                     </div>
@@ -264,7 +269,7 @@
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-body">
-                                                    <h3 class="review-page-title">Write Your Review</h3>
+                                                    <h3 class="review-page-title">Yorum Yaz</h3>
                                                     <div class="modal-inner-area row">
                                                         <div class="col-lg-6">
                                                            <div class="li-review-product">
@@ -325,9 +330,9 @@
 
                                                                     </div>
                                                                     {% if user.id is not None %}
-                                                                    <button class="primary-btn">Send Comment</button>
+                                                                    <button class="primary-btn">Yorumu Gönder</button>
                                                                     {% else %}
-                                                                        Yorum eklemek icin <a href="/login ">Login</a> yapiniz..
+                                                                        Yorum eklemek icin <a href="/login ">Giriş</a> yapiniz..
                                                                     {% endif %}
 
 
