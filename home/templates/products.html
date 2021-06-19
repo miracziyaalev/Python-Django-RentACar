@@ -61,7 +61,8 @@
 
                                                                 <h4><a class="product_name" href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.title}}</a></h4>
                                                                 <div class="price-box">
-                                                                    <span class="new-price">${{ rs.price }}</span>
+                                                                    <span class="new-price">Günlük: <i style="color:coral">₺{{ rs.price }} </i></span>
+
                                                                 </div>
 
                                                             </div>
@@ -106,8 +107,8 @@
 
                                                                 <h4><a class="product_name" href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a></h4>
                                                                 <div class="price-box">
-                                                                    <span class="new-price">${{ rs.price }}</span>
-                                                                    <br>
+                                                                    <span class="new-price">Günlük: <i style="color:coral">${{ rs.price }} </i></span>
+
                                                                 </div>
                                                                 <p> {{ rs.description }} </p>
                                                             </div>

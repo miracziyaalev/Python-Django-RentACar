@@ -52,13 +52,13 @@
                                 <tr>
 
 
-                                    <th class="text-left"> Product</th>
-                                    <th class="text-left"> RezDate</th>
-                                    <th class="text-left"> ReturnDate</th>
+                                    <th class="text-left"> Ürün</th>
+                                    <th class="text-left"> Alış Tarihi</th>
+                                    <th class="text-left"> Teslim Tarihi</th>
                                     <th class="text-left"> Ücret</th>
 
                                     <th class="text-left"> Not</th>
-                                    <th class="text-left"> Status</th>
+                                    <th class="text-left"> Durum</th>
 
                                     <th class="text-left"> Sil</th>
 
@@ -75,12 +75,12 @@
 
                                     <td class="text-left"> {{ rs.reservationdate }}</td>
                                     <td class="text-left"> {{ rs.stopdate }}</td>
-                                    <td class="text-left"> ${{ rs.total }}</td>
+                                    <td class="text-left"> ₺{{ rs.total }}</td>
 
 
                                     <td class="text-left"> {{ rs.note }}</td>
                                     <td class="text-left"> {{ rs.status }}</td>
-                                    {% if rs.status == 'New' %}
+                                    {% if rs.status == 'Beklemede' %}
                                     <td class="text-left"><a class="primary-btn" href="/user/deletereservations/{{ rs.id }}" onclick="return confirm('Rezervasyon talebiniz silinecek. Emin misiniz?')"> Sil </a> </td>
                                     {% endif %}
 

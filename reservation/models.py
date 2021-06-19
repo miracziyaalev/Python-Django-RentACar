@@ -7,9 +7,9 @@ from product.models import Product
 
 class Reservation(models.Model):
     STATUS = (
-        ('New', 'Yeni'),
-        ('True', 'Evet'),
-        ('False', 'Hayır'),
+        ('Beklemede', 'Beklemede'),
+        ('Onaylandı', 'Onaylandı'),
+        ('Reddedildi', 'Reddedildi'),
     )
 
 

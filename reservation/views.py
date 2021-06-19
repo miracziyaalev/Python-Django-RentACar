@@ -31,13 +31,31 @@ def sendreserve(request, id):
             if delta.seconds > 0:
                 days = delta.days + 1
 
+            if delta.days < 0:
+                messages.error(request, "Lütfen tarih aralığını doğru seçiniz...")
+                return HttpResponseRedirect(url)
+
+
             data.ip = request.META.get('REMOTE_ADDR')
             data.total = total * Product.objects.get(id=id).price * days
             data.product_id = id
             current_user = request.user
             data.user_id = current_user.id
-            data.save()  # save data to table
-            messages.success(request, "Rezervasyonunuz Alınmıştır. Teşekkür ederiz.")
+
+            amount = Product.objects.get(id=id).amount
+
+            if amount > 0:
+                product = Product.objects.get(id=id)
+                product.amount = product.amount -1
+                product.save()
+
+                data.save() # save data to table
+
+            else:
+                messages.error(request, "Bu modele ait tüm araçlarımız kullanımdadır.")
+                return HttpResponseRedirect(url)
+
+            messages.success(request, "Rezervasyonunuz alınmıştır. Rezervasyon bilgileriniz profil sayfanızda listelenmektedir. Gelişmeleri takip edebilirsiniz. Teşekkür ederiz.")
             return HttpResponseRedirect(url)
         messages.error(request, "Lütfen boş bırakılan yerleri doldurunuz...!")
     return HttpResponseRedirect(url)

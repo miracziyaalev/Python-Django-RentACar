@@ -51,16 +51,18 @@
                                                                 </div>
                                                                 <h4><a class="product-name" href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.title}}</a></h4>
                                                                 <div class="price-box">
-                                                                    <span class="new-price">Günlük: <i style="color:coral">${{ rs.price }} </i></span>
+                                                                    <span class="new-price">Günlük: <i style="color:coral">₺{{ rs.price }} </i></span>
 
                                                                 </div>
                                                             </div>
                                                             <div class="add-actions">
-                                                                <ul class="add-actions-link">
-                                                                    <li class="add-cart active"><a href="">Add to cart</a></li>
-                                                                    <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
-                                                                    <li><a class="links-details" href=""><i class="fa fa-heart-o"></i></a></li>
-                                                                </ul>
+
+
+                                                                     <li class="wishlist"><a href="/product/{{ rs.id }}/{{ rs.slug }}">Vites: {{ rs.gear }}</a></li>
+                                                                <li class="wishlist"><a href="/product/{{ rs.id }}/{{ rs.slug }}">Motor: {{ rs.engine }}</a></li>
+                                                                <li class="wishlist"><a href="/product/{{ rs.id }}/{{ rs.slug }}">Koltuk Sayısı: {{ rs.number_of_seats }}</a></li>
+                                                                <li class="wishlist"><a href="/product/{{ rs.id }}/{{ rs.slug }}"></i>Model: {{ rs.modelyear}}</a></li>
+
                                                             </div>
                                                         </div>
                                                     </div>

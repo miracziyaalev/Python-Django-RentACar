@@ -76,7 +76,7 @@
                                     <h2>{{ product.title}}</h2>
 
                                     <div class="price-box pt-20">
-                                        <span class="new-price new-price-2">${{ product.price }}</span>
+                                        <span class="new-price new-price-2">₺{{ product.price }}</span>
                                     </div>
                                     <div class="product-desc">
                                         <p>
@@ -226,7 +226,6 @@
                                                 <div class="comment-body pl-15">
 
                                                     <h5 class="comment-author pt-15">{{ rs.user.first_name }}</h5> <p>  <div class="review-rating pull-right">
-
                                                         <i class="fa fa-star{% if rs.rate < 1 %}-o empty{% endif %}"> </i>
                                                         <i class="fa fa-star{% if rs.rate < 2 %}-o empty{% endif %}"> </i>
                                                         <i class="fa fa-star{% if rs.rate < 3 %}-o empty{% endif %}"> </i>
@@ -264,9 +263,11 @@
                                                         <div class="col-lg-6">
                                                            <div class="li-review-product">
                                                                <img src="{{ product.image.url }}" alt="Li's Product" style="height: 200px " style="width: 200px">
-                                                           <div class="price-box pt-20">
-                                        <span class="new-price new-price-2">${{ product.price }}</span>
-                                    </div>
+                                                           <div class="price-box">
+                                                               <br>
+                                                                    <span class="new-price">Günlük: <i style="color:coral">₺{{ product.price }} </i></span>
+
+                                                                </div>
                                                                <div class="li-review-product-desc">
                                                                    <p class="li-product-name">{{ product.title}}</p>
                                                                    <p>
@@ -294,7 +295,7 @@
                                                                     {% csrf_token %}
                                                                     <div class="form-group">
 
-                                                                        <input class="input" type="text" name="subject" id="id_subject" placeholder="Subject" />
+                                                                        <input class="input" type="text" name="subject" id="id_subject" placeholder="Konu" />
 
                                                                     </div>
                                                                     <div class="form-group">
@@ -309,7 +310,9 @@
 
                                                                             <strong class="text-uppercase">Your rating: </strong>
                                                                             <div class="star-rating">
+
                                                                                 <input type="radio" placeholder="5" id="star5" name="rate" value="5" /> <label for="star5"></label>
+
                                                                                 <input type="radio" id="star4" name="rate" value="4" /> <label for="star4"></label>
                                                                                 <input type="radio" id="star3" name="rate" value="3" /> <label for="star3"></label>
                                                                                 <input type="radio" id="star2" name="rate" value="2" /> <label for="star2"></label>

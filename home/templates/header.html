@@ -67,7 +67,7 @@
                             <div class="col-lg-3">
                                 <div class="logo pb-sm-30 pb-xs-30">
                                     <a href="index.html">
-                                        <img src="{% static 'images/menu/logo/1.jpg' %}" alt="">
+                                        <img src="{% static 'images/menu/logo/3.png' %}" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -115,14 +115,16 @@
                                                     {% recursetree category %}
 
                                                         <li class="sub-dropdown-holder"><a href="/category/{{ node.id }}/{{ node.slug }}">{{ node.title }}</a>
+                                                            {% if not node.is_leaf_node %}
                                                             <ul class="hb-dropdown hb-sub-dropdown">
 
-                                                            {% if not node.is_leaf_node %}
+
                                                                 <ul class="children">
                                                                     <li><a href="blog-2-column.html">{{ children }}</a></li>
                                                                 </ul>
-                                                            {% endif %}
+
                                                              </ul>
+                                                        {% endif %}
                                                         </li>
 
                                                     {% endrecursetree %}

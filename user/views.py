@@ -90,14 +90,14 @@ def reservations(request):
 def deletecomment(request, id):
     current_user = request.user
     Comment.objects.filter(id=id, user_id=current_user.id).delete()
-    messages.success(request, 'Yorumunuz silindi.')
+    messages.success(request, 'Yorumunuz silinmiştir.')
     return HttpResponseRedirect('/user/comments')
 
 @login_required(login_url='/login')
 def deletereservations(request, id):
     current_user = request.user
     Reservation.objects.filter(id=id, user_id=current_user.id).delete()
-    messages.success(request, 'Rezervasyonunuz silindi')
+    messages.success(request, 'Rezervasyon talebiniz kaldırılmıştır.')
     return HttpResponseRedirect('/user/reservations')
 
 

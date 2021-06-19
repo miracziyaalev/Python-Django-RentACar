@@ -6,7 +6,7 @@ urlpatterns = [
     # ex: /polls/
     django.urls.path('', views.index, name='index'),
     django.urls.path('sendreserve/<int:id>', views.sendreserve, name='sendreserve')
-    #django.urls.path('addcomment/<int:id>', views.addcomment, name='addcomment')
+
 
 
 
