@@ -54,7 +54,7 @@ class Product(models.Model):
         )
 
     GEAR = (
-        ('Otomatil', 'Otomatik'),
+        ('Otomatik', 'Otomatik'),
         ('Manuel', 'Manuel'),
     )
 

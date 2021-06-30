@@ -29,8 +29,8 @@
                                     <div class="product-view-mode">
                                         <!-- shop-item-filter-list start -->
                                         <ul class="nav shop-item-filter-list" role="tablist">
-                                            <li class="active" role="presentation"><a aria-selected="true" class="active show" data-toggle="tab" role="tab" aria-controls="grid-view" href="#grid-view"><i class="fa fa-th"></i></a></li>
-                                            <li role="presentation"><a data-toggle="tab" role="tab" aria-controls="list-view" href="#list-view"><i class="fa fa-th-list"></i></a></li>
+                                            <li class="presentation" role="active"><a aria-selected="true" class="active show" data-toggle="tab" role="tab" aria-controls="grid-view" href="#grid-view"><i class="fa fa-th"></i></a></li>
+                                            <li role="active"><a data-toggle="tab" role="tab" aria-controls="list-view" href="#list-view"><i class="fa fa-th-list"></i></a></li>
                                         </ul>
                                         <!-- shop-item-filter-list end -->
                                     </div>
@@ -44,7 +44,7 @@
                             <!-- shop-products-wrapper start -->
                             <div class="shop-products-wrapper">
                                 <div class="tab-content">
-                                    <div id="grid-view" class="tab-pane fade active show" role="tabpanel">
+                                    <div id="grid-view" class="tab-pane fade product-list-view" role="tabpanel">
                                         <div class="product-area shop-product-area">
                                             <div class="row">
                                                 {% for rs in products %}
@@ -88,7 +88,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="list-view" class="tab-pane fade product-list-view" role="tabpanel">
+                                    <div id="list-view" class="tab-pane fade active show" role="tabpanel">
                                         <div class="row">
                                             <div class="col">
                                                 {% for rs in products %}
@@ -107,7 +107,7 @@
 
                                                                 <h4><a class="product_name" href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a></h4>
                                                                 <div class="price-box">
-                                                                    <span class="new-price">Günlük: <i style="color:coral">${{ rs.price }} </i></span>
+                                                                    <span class="new-price">Günlük: <i style="color:coral">₺{{ rs.price }} </i></span>
 
                                                                 </div>
                                                                 <p> {{ rs.description }} </p>

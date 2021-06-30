@@ -17,6 +17,7 @@ def index(request):
     bannercon1 = Product.objects.all().filter()
     suvs = Product.objects.all().filter(category__parent_id=5)[:10]
     sedan = Product.objects.all().filter(category__parent_id=12)[:10]
+    stationwagon = Product.objects.all().filter(category__parent_id=18)[:10]
     hatchback = Product.objects.all().filter(category__parent_id=8)[:10]
     bannerdata2 = Product.objects.all().order_by('-id')[:1]
     category = Category.objects.all()
@@ -34,6 +35,7 @@ def index(request):
                'bannercon1': bannercon1,
                'suvs': suvs,
                'sedan': sedan,
+               'stationwagon': stationwagon,
                'hatchback': hatchback,
                'lastproducts': lastproducts,
 
